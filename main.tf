@@ -5,6 +5,7 @@ locals {
 }
 
 resource "google_secret_manager_secret" "main" {
+  project   = var.project_id
   secret_id = var.secret_id
   labels    = local.labels
 
@@ -14,8 +15,8 @@ resource "google_secret_manager_secret" "main" {
 }
 
 resource "google_secret_manager_secret_version" "main" {
-  secret      = google_secret_manager_secret.main.id
-  secret_data = var.enable_random_data ? random_password.random_data[0].result : var.data
+  secret         = google_secret_manager_secret.main.id
+  secret_data_wo = var.enable_random_data ? random_password.random_data[0].result : var.data
 }
 
 resource "random_password" "random_data" {

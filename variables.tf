@@ -1,3 +1,8 @@
+variable "project_id" {
+  description = "The GCP project you want to enable APIs on"
+  type        = string
+}
+
 variable "secret_id" {
   type        = string
   description = "The secret identifier to create; this value must be unique within the project."
